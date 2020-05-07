@@ -1,17 +1,20 @@
-create table post(
-    id bigint auto_increment primary key,
-    title varchar(400) not null,
-    content varchar(2000) null,
+
+CREATE TABLE POST
+(
+    id      BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title   VARCHAR(400)  NOT NULL,
+    content VARCHAR(2000) NULL,
     created timestamp
 );
 
-create table comment (
-    id bigint auto_increment primary key,
-    post_id bigint not null ,
-    content varchar(2000) null,
+CREATE TABLE COMMENT
+(
+    id      BIGINT AUTO_INCREMENT PRIMARY KEY,
+    post_id BIGINT        NOT NULL,
+    content VARCHAR(2000) NULL,
     created timestamp
 );
 
-alter table  comment
-add constraint  comment_post_id
-foreign key (post_id) references post(id)
+ALTER TABLE COMMENT
+    ADD CONSTRAINT comment_post_id
+        FOREIGN KEY (post_id) REFERENCES post (id);
